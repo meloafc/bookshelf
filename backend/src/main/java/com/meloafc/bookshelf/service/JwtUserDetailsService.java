@@ -1,8 +1,10 @@
 package com.meloafc.bookshelf.service;
 
+import com.meloafc.bookshelf.exception.InvalidValueException;
 import com.meloafc.bookshelf.model.User;
 import com.meloafc.bookshelf.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -38,7 +40,21 @@ public class JwtUserDetailsService extends GenericService<User, Long> implements
 
     @Override
     public void validate(User entity) {
-        //TODO: validate unique email
+        if(userRepository.existsByEmail(entity.getEmail())) {
+            throw new InvalidValueException("email unavailable: " + entity.getEmail());
+        }
         super.validate(entity);
+    }
+
+    public String getLoggedEmail() {
+        return ((org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+    }
+
+    public User getLoggedUser() {
+        User user = userRepository.findByEmail(getLoggedEmail());
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found with email: " + getLoggedEmail());
+        }
+        return user;
     }
 }

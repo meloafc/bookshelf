@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+// @import 'theme.scss';
+
+html, body {
+  max-width: 1920px;
+  display: block;
+  margin: 0 auto;
+  background-color: #e3e3e3;
+  color: #8e8e8e;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

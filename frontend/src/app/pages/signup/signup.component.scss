@@ -1,0 +1,53 @@
+// @import 'default-colors.scss';
+
+.signup-box {
+  border-radius: 15px;
+  background-color: #fff;
+  width: 25%;
+  margin: 10rem auto 0 auto;
+  padding: 5% 5% 1% 5%;
+
+  .logo {
+    text-align: center;
+    img {
+      margin: 1% auto;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  form {
+    margin: 10% auto;
+    text-align: center;
+  }
+
+  .btn-signup {
+    max-width: 50%;
+    text-align: center;
+    margin: 20px auto;
+
+    button {
+      width: auto;
+    }
+  }
+
+  .register {
+    text-align: center;
+    margin: 6% auto 3% auto;
+
+    a:link {
+      text-decoration: none;
+      color: #8e8e8e;
+    }
+
+    a:visited {
+      color: #8e8e8e;
+    }
+
+    a:hover {
+      color: #d4d4d4;
+    }
+  }
+
+}  

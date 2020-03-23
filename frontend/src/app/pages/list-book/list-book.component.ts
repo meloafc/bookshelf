@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../providers/services/user.service';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -30,9 +32,21 @@ export class ListBookComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.userService.logout();
+    this.navigateToLogin();
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/pages/login']);
   }
 
 }

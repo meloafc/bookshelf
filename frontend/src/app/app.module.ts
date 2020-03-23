@@ -8,7 +8,9 @@ import { MaterialModule } from './shared/material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './security/jwt-interceptor';
+import { ErrorInterceptor } from './security/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes, { useHash: true })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

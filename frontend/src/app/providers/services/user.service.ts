@@ -12,10 +12,23 @@ import { environment } from '../../../environments/environment';
 })
 export class UserService {
 
+  private static readonly CURRENT_USER = 'currentUser';
   private usersUrl = environment.apiUrl + ENDPOINTS.USERS;
 
   constructor(private http: HttpClient) {
 
+  }
+
+  setCurrentUser(token: Token) {
+    localStorage.setItem(UserService.CURRENT_USER, JSON.stringify(token));
+  }
+
+  getCurrentUser(): Token {
+    return JSON.parse(localStorage.getItem(UserService.CURRENT_USER));
+  }
+
+  logout() {
+    localStorage.removeItem(UserService.CURRENT_USER);
   }
 
   authenticate(login: Login): Observable<Token> {

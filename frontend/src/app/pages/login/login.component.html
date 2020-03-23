@@ -8,17 +8,17 @@
         <p>Login</p>
         <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput type="email" placeholder="Ex. pat@example.com">
+            <input [(ngModel)]="login.email" name="email" matInput type="email" placeholder="pat@example.com">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password">
+            <input [(ngModel)]="login.password" name="password" matInput type="password">
         </mat-form-field>
     </form>
 
     <div class="btn-login">
-        <button mat-flat-button color="primary">Login</button>
+        <button (click)="doLogin()" mat-flat-button color="primary">Login</button>
     </div>
 
     <mat-divider></mat-divider>

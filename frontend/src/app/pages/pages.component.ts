@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Login } from '../providers/models/login.model';
 
 @Component({
   selector: 'app-pages',
@@ -7,8 +6,6 @@ import { Login } from '../providers/models/login.model';
   styleUrls: ['./pages.component.scss']
 })
 export class PagesComponent implements OnInit {
-
-  user: Login = new Login();
 
   constructor() { }
 

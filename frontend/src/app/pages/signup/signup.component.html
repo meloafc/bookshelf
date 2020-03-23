@@ -8,26 +8,27 @@
         <p>Sign up</p>
         <mat-form-field>
             <mat-label>Name</mat-label>
-            <input matInput type="text">
+            <input [(ngModel)]="user.name" name="name" matInput type="text">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>E-mail</mat-label>
-            <input matInput type="email" placeholder="Ex. pat@example.com">
+            <input [(ngModel)]="user.email" name="email" matInput type="email" placeholder="pat@example.com">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput type="password">
+            <input [(ngModel)]="user.password" name="password" matInput type="password">
         </mat-form-field>
 
         <mat-form-field>
             <mat-label>Confirme Password</mat-label>
-            <input matInput type="password">
+            <input [(ngModel)]="user.confirmPassword" name="confirmPassword" matInput type="password">
         </mat-form-field>
     </form>
 
     <div class="btn-signup">
-        <button mat-flat-button color="primary">Register</button>
+        <button routerLink="/pages/login" mat-flat-button>Return</button>
+        <button (click)="register()" mat-flat-button color="primary">Register</button>
     </div>
 </div>

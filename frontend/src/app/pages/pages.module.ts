@@ -8,12 +8,14 @@ import { LoginComponent } from './login/login.component';
 import { PagesRoutes } from './pages.routing';
 import { SignupComponent } from './signup/signup.component';
 import { ListBookComponent } from './list-book/list-book.component';
+import { NewBookComponent } from './new-book/new-book.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     SignupComponent,
-    ListBookComponent
+    ListBookComponent,
+    NewBookComponent
   ],
   entryComponents: [
   ],
